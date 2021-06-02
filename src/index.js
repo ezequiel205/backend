@@ -1,40 +1,69 @@
 const express = require('express');
+const { uuid } = require('uuidv4') // uuid tem a mesma função aqui que o comando next val no PLSQL
 
-// Criando servidor HTTP e retornando uma resposta
-const app = express();
+const app = express(); // Criando servidor HTTP e retornando uma resposta
+
+app.use(express.json()); // Indico que eu usarei o express
+
+const projects = []; // Somente utilizar em HML
 
 // Metodo GET
-app.get('/meusprojetos', (request, response) => {
-    return response.json([
-        'Projeto 1',
-        'Projeto 2',
-    ]);
-})
+app.get('/projects', (request, response) => {
+
+    const { title } = request.query
+
+    const results = title 
+    ? projects.filter(project => project.title.includes(title))
+    : projects;
+
+    return response.json(results); // Tudo que será retornado para o usuário em arquivo JSON
+});
 
 // Metodo POST
-app.post('/meusprojetos', (request, response) => {
-    return response.json([
-        'Projeto 1',
-        'Projeto 2',
-        'Projeto 3',
-    ]);
-})
+app.post('/projects', (request, response) => {
+    const { title, owner } = request.body;
+    const project = { id: uuid(), title, owner };
+
+    projects.push(project);
+
+    return response.json(project);
+});
 
 // Metodo PUT
-app.put('/meusprojetos/:idAltereEsteParametro', (request, response) => {
-    return response.json([
-        'Projeto 1',
-        'Projeto 2',
-        'Projeto 3',
-    ]);
-})
+app.put('/projects/:id', (request, response) => {
+    const {id} = request.params;
+    const { title, owner } = request.body;
+
+    const projectIndex = projects.findIndex(project => project.id == id);
+
+    // Se nao encontrou o projectIndex
+    if (projectIndex < 0) {
+        return response.status(400).json({ error: 'Project not found' })
+    }
+
+    const project = {
+        id,
+        title,
+        owner,
+    };
+
+    projects[projectIndex] = project;
+
+    return response.json(project);
+});
 
 // Metodo Delete
-app.delete('/meusprojetos/:idAltereEsteParametro', (request, response) => {
-    return response.json([
-        'Projeto 2',
-        'Projeto 3',
-    ]);
+app.delete('/projects/:id', (request, response) => {
+    const { id } = request.params;
+
+    const projectIndex = projects.findIndex(project => project.id == id);
+ 
+    if (projectIndex < 0) {
+        return response.status(400).json({ error: 'Project not found' });
+    }
+    projects.splice(projectIndex, 1);
+
+    return response.status(204).send(); // Retornar em branco (recomenda-se usar erro 204)
 })
 
 // Especificando porta e retornando mesagem no terminal

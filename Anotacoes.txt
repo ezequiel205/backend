@@ -1,5 +1,11 @@
 /* Métodos HTTP:
 
-GET
+yarn dev na package.json
+
+    ** TIPOS DE PARAMETROS **
+
+    Query Params: Filtros e PaginaçãoW
+    Route Params: Identificar recursos (atualizar / Deletar)
+    Request Body: Conteúdo na hora de criar ou editar um recurso (JSON)
 
 */
