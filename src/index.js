@@ -1,5 +1,5 @@
 const express = require('express');
-const { uuid } = require('uuidv4') // uuid tem a mesma função aqui que o comando next val no PLSQL
+const { uuid, isUuid } = require('uuidv4') // uuid tem a mesma função aqui que o comando next val no PLSQL
 
 const app = express(); // Criando servidor HTTP e retornando uma resposta
 
@@ -7,9 +7,39 @@ app.use(express.json()); // Indico que eu usarei o express
 
 const projects = []; // Somente utilizar em HML
 
+function logRequests(request, response, next) {
+    const { method, url } = request;
+
+    const logLabel = `[${method.toUpperCase()}] ${url}`;
+
+    console.log('1')
+    console.time(logLabel);
+
+    next(); // Próximo middleware
+
+    console.log('2')
+    console.timeEnd(logLabel);
+}
+
+function validateProjectId(request, response, next) {
+    const { id } = request.params;
+
+    // Valida se o ID é diferente do que já existe
+    if (!isUuid(id)) {
+        return response.status(400).json({error: 'Invalid project ID'});
+    }
+
+    // Continua, se o ID for o mesmo irá executar normal
+    return next();
+;}
+
+app.use(logRequests);
+// Todos que tiverem esse caminho recebe a validação de ID validateProjectId. Igual uma variavel global
+app.use('/projects/:id', validateProjectId)
+
 // Metodo GET
 app.get('/projects', (request, response) => {
-
+    console.log('3')
     const { title } = request.query
 
     const results = title 
@@ -59,7 +89,7 @@ app.delete('/projects/:id', (request, response) => {
     const projectIndex = projects.findIndex(project => project.id == id);
  
     if (projectIndex < 0) {
-        return response.status(400).json({ error: 'Project not found' });
+        return response.status(400).json({ error: 'Project not found!!!' });
     }
     projects.splice(projectIndex, 1);
 
@@ -68,5 +98,5 @@ app.delete('/projects/:id', (request, response) => {
 
 // Especificando porta e retornando mesagem no terminal
 app.listen(3333, () => {
-    console.log('🐱‍🏍Back-end started!✌')
+    console.log('Back-end started!✌')
 });
