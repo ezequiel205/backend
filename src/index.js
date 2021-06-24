@@ -1,8 +1,10 @@
 const express = require('express');
+const cors = require('cors');
 const { uuid, isUuid } = require('uuidv4') // uuid tem a mesma função aqui que o comando next val no PLSQL
 
 const app = express(); // Criando servidor HTTP e retornando uma resposta
 
+app.use(cors());  // Permite que qualquer FRONTEND vindo de qualquer URL tenha acesso ao nosso BACKEND
 app.use(express.json()); // Indico que eu usarei o express
 
 const projects = []; // Somente utilizar em HML
