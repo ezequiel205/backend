@@ -8,7 +8,7 @@
 </p>
 
 <!-- Nome do Projeto -->
-<h1 align="center">Bootcamp - Parte 1 (BackEnd)</h1>
+<h1 align="center">Bootcamp - Parte 2/2 (BackEnd)</h1>
 
 <!-- Descrição do Projeto -->
 <p align = "center"> 🚧 Aplicação em desenvolvimento...🚧 </p>
