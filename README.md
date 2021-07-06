@@ -1,10 +1,6 @@
-
 <p id="Primeiro paragrafo"> 
-	
 <img src="https://img.shields.io/github/stars/ezequiel205/backend" />
 <img src="https://img.shields.io/github/forks/ezequiel205/backend" /> 
-<!-- <img src="https://img.shields.io/github/issues/ezequiel205/backend" /> -->
-	
 </p>
 
 <!-- Nome do Projeto -->
@@ -13,43 +9,46 @@
 <!-- Descrição do Projeto -->
 <p align = "center"> 🚧 Aplicação em desenvolvimento...🚧 </p>
 
-<!--
-### Features
 
-- [x] Instalação das ferramentas necessárias
-- [x] Criação de métodos GET e POST
-- [x] Criar rota funcional (localmente)
-- [x] Trabalhar com TypeORM + TypeScript
-- [x] Conexão com o Banco de Dados (SQLite)
-- [x] Criacao de novas rotas, repositorios e controllers
-- [x] Criação do serviço de email utilizando o Etherial Mail
-- [x] Aplicar melhorias no código
-- [x] Estilização do código
-- [x] Finalização e ultimos retoques na API (Por enquanto. haha! ^.^)
+# Indice
 
-### Pré-requisitos
+- [Sobre](#-sobre)
+- [Tecnologias Utilizadas](#-tecnologias-utilizadas)
+- [Como baixar o projeto](#-como-baixar-o-projeto)
 
-- Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
-[Node.js](https://nodejs.org/en/) + [NPM](https://www.npmjs.com/get-npm),  [Yarn](https://yarnpkg.com/), [VSCode](https://code.visualstudio.com/) e configurações.
-- Além disto é bom ter um testador de API's para trabalhar com o código como [Postman](https://www.postman.com/) e um versionador de código como o [Git](https://git-scm.com)
-- Bônus¹: No seu navegador Google Chrome instale a Json Viewer e nas opções dela altere o tema para "Dracula". Sua página localhost ficará irada 🤘
-- Bônus²: Caso ainda esteja com dúvidas em como configurar o ambiente e necessite de uma passo a passo bem detalhado pode conferir [aqui](https://www.notion.so/Configura-es-do-ambiente-Node-js-ae9fea3f78894139af4268d198294e2a)
+## 🔖&nbsp; Sobre
 
-### 🎲 Rodando o Back End (servidor)
+O projeto **GoBarber** é uma aplicação que criada dentro do **Bootcamp GoStack** coloando em prática todo conteúdo estudado durante o curso.
+
+---
+
+## 🚀 Tecnologias utilizadas
+
+O projeto foi desenvolvido utilizando as seguintes tecnologias
+
+- [ReactJS](https://reactjs.org)
+- [ReactNative](https://reactnative.dev)
+- [Insominia](https://insomnia.rest)
+
+---
+
+## 🗂 Como baixar o projeto
 
 ```bash
-# Clone este repositório
-$ git clone <https://github.com/ezequiel205/nlw4-projeto-nodejs.git>
 
-# Acesse a pasta do projeto no terminal/VSCode
-$ cd nlw4-projeto-nodejs
+    # Clonar o repositório
+    $ git clone https://github.com/ezequiel205/backend
 
-# Instale as dependências
-$ npm i
+    # Entrar no diretório
+    $ cd backend
 
-# Execute a aplicação em modo de desenvolvimento
-$ yarn dev
+    # Instalar as dependências
+    $ yarn install
 
-# O servidor inciará na porta:3333 - Acesse <http://localhost:3333> no seu navegador
+    # Iniciar o projeto
+    $ yarn start
 ```
--->
+
+---
+
+Desenvolvido 🎲 por Ezequiel Almeida
